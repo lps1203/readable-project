@@ -6,7 +6,7 @@ import { setViewCategory } from '../actions/viewAction'
 
 class ListPosts extends Component {
   componentDidAmount() {
-    const category = this.props.match.params    
+    const { category }  = this.props.match.params    
     this.props.dispatch(setViewCategory(category))
   }
   render() {
@@ -16,7 +16,7 @@ class ListPosts extends Component {
 
     return (
       <div>
-        <div class="sort">
+        <div className="sort">
           <div>
             <label className="sort-label">List order</label>
             <select id="sortOrder">
@@ -28,13 +28,9 @@ class ListPosts extends Component {
             <button>New Post</button>
           </div>
         </div> 
-        {/* Display all posts for 'home' */}
-        <ul>
-          {category === 'home' && Object.keys(posts).map(postId => 
-            <li key={postId}><ListOnePost postId={postId}/></li>
-          )}
-        </ul>
-        {/* Display posts for 'category' */}
+        {category === 'home' && Object.keys(posts).map(postId => 
+          postIdList.push(postId)
+        )}
         {categories.forEach(categoryInStore => 
           category === categoryInStore && Object.keys(posts).filter(postId =>
             posts[postId]['category'] === category).map(postId => 
