@@ -10,11 +10,7 @@ class ListPosts extends Component {
   state = {
     sortByDate: false,
   }
-
-  componentWillMount() {
-    this.props.dispatch(setViewCategory(this.props.match.params.category))   
-  }
-
+  
   handleOnChange = (event) => {
     this.setState({
       sortByDate: event.target.value ==='Newest'

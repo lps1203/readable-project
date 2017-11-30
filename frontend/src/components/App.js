@@ -141,8 +141,6 @@ class App extends Component {
   //   })
   // }
 
-
-
   state = {
     home: {},
     react: {},
@@ -174,32 +172,7 @@ class App extends Component {
     }
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      home: {},
-      react: {},
-      redux: {},
-      udacity: {},
-      [this.props.views.viewingCategory]: { borderBottom: 'thin solid black' }
-    })
-  }
-
   handleClick = (category) => {
-    // In the top navi menu, put an underline underneath the category selected
-    // this.setState({
-    //   home: {},
-    //   react: {},
-    //   redux: {},
-    //   udacity: {},
-    //   [category]: { borderBottom: 'thin solid black' }
-    // })
-
-    // Set store.view.viewingCategory to the category selected
-    this.props.dispatch(setViewCategory(category))
-  }
-
-  changeNavi = (category) => {
-   // In the top navi menu, put an underline underneath the category selected
     this.setState({
       home: {},
       react: {},
@@ -207,6 +180,8 @@ class App extends Component {
       udacity: {},
       [category]: { borderBottom: 'thin solid black' }
     })
+
+    this.props.dispatch(setViewCategory(category))
   }
 
   render() {
@@ -229,9 +204,9 @@ class App extends Component {
               </li>
           </ul>
         </div>
+        <div className="Routes">
         {/* Establish routes for top navigation menu */}
         {/* Notice that "/" is the same as "/home" */}
-        <div className="routes">
           <Route path="/:category" component={ListPosts}/>
           <Route exact path="/" render={() =>
             <Redirect to="/home"/>
