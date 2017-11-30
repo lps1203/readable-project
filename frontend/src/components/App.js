@@ -186,13 +186,13 @@ class App extends Component {
 
   handleClick = (category) => {
     // In the top navi menu, put an underline underneath the category selected
-    this.setState({
-      home: {},
-      react: {},
-      redux: {},
-      udacity: {},
-      [category]: { borderBottom: 'thin solid black' }
-    })
+    // this.setState({
+    //   home: {},
+    //   react: {},
+    //   redux: {},
+    //   udacity: {},
+    //   [category]: { borderBottom: 'thin solid black' }
+    // })
 
     // Set store.view.viewingCategory to the category selected
     this.props.dispatch(setViewCategory(category))

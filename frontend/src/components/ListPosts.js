@@ -11,7 +11,7 @@ class ListPosts extends Component {
     sortByDate: false,
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(setViewCategory(this.props.match.params.category))   
   }
 
