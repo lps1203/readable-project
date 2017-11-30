@@ -6,6 +6,7 @@ import fancyTimestamp from 'fancy-timestamp'
 function ListOnePost(props) {
   const { postId, posts } = props
   const post = posts[postId]
+  console.log('8888j&&&', postId, '999j&&&', post)
   return (
     <div className="one-post">
       <div className="comment-count-display">
