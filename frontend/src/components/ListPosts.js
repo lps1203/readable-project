@@ -10,7 +10,7 @@ class ListPosts extends Component {
   state = {
     sortByDate: false,
   }
-  
+
   handleOnChange = (event) => {
     this.setState({
       sortByDate: event.target.value ==='Newest'

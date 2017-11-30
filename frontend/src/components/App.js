@@ -122,17 +122,17 @@ class App extends Component {
   //   })
   // }
 
-  // deletePost = () => {
-  //   const postId = "8xf0y6ziyjabvozdd253nd"
-  //   this.props.dispatch(deletePost(postId)).then(() => {
-  //     console.log('Success-Deleted a post')
-  //   })
-  //   // delete (from the store) the comments belonging to the deleted post
-  //   Object.keys(this.props.comments).forEach(commentId => {
-  //     this.props.comments[commentId]['parentId'] === postId &&
-  //       this.props.dispatch(deleteComment_(commentId))
-  //   })
-  // }
+  deletePost = () => {
+    const postId = "8xf0y6ziyjabvozdd253nd"
+    this.props.dispatch(deletePost(postId)).then(() => {
+      console.log('Success-Deleted a post')
+    })
+    // delete (from the store) the comments belonging to the deleted post
+    Object.keys(this.props.comments).forEach(commentId => {
+      this.props.comments[commentId]['parentId'] === postId &&
+        this.props.dispatch(deleteComment_(commentId))
+    })
+  }
 
   // deleteComment = () => {
   //   const commentId = "8tu4bsun805n8un48ve89"

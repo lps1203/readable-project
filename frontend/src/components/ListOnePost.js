@@ -2,11 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Vote from './Vote'
 import fancyTimestamp from 'fancy-timestamp'
+import { deletePost } from '../utils/apiBridge'
 
 function ListOnePost(props) {
   const { postId, posts } = props
   const post = posts[postId]
-  console.log('8888j&&&', postId, '999j&&&', post)
   return (
     <div className="one-post">
       <div className="comment-count-display">
@@ -21,7 +21,7 @@ function ListOnePost(props) {
         </p>
         <div className="btns">
           <button className="edit btn">Edit</button>
-          <button className="delete btn">Delete</button>
+          <button className="delete btn" onClick={() => deletePost(props, postId)}>Delete</button>
           <button className="comment btn">Comment</button>
         </div>
       </div>
