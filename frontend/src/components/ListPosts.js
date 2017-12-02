@@ -17,10 +17,6 @@ class ListPosts extends Component {
     })  
   }
 
-  preventDisplay() {
-    return null
-  }
-
   render() {
     const { category }  = this.props.match.params  
     const { categories, posts } = this.props
@@ -42,7 +38,7 @@ class ListPosts extends Component {
         </div>
         {/* Create an arrray of post objects */}
         { 
-          this.preventDisplay(
+          (() => {
             category === 'home' ?
               Object.keys(posts).map(postId =>
                 postList.push(posts[postId])
@@ -54,16 +50,16 @@ class ListPosts extends Component {
                     postList.push(posts[postId])
                   )
               )
-          )
+            })()
         }
         {/* Sort by time or vote score */}
         { 
-          this.preventDisplay(
+          (() => {
             this.state.sortByDate ?
               postList.sort(sortBy('-timestamp'))
               :
               postList.sort(sortBy('-voteScore'))
-          )
+          })()
         }
         <ul>
           {postList.map(post => {
