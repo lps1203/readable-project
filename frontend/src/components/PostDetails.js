@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { setViewPostId } from '../actions/viewAction'
 
 class PostDetails extends Component {
+
+  componentWillMount() {
+    this.props.dispatch(setViewPostId(this.props.match.params.postId))
+  }
 
   render() {
     const { postId } = this.props.match.params

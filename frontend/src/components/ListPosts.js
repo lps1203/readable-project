@@ -23,7 +23,8 @@ class ListPosts extends Component {
 
   render() {
     const { category }  = this.props.match.params  
-    const { categories, posts } = this.props 
+    const { categories, posts } = this.props
+    const { viewingPostId } = this.props.views
     const postList = []
     return (
       <div>
@@ -66,8 +67,13 @@ class ListPosts extends Component {
         }
         <ul>
           {postList.map(post => {
-            console.log(post['id'])
-            return <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
+            console.log('viewingPostId in ListPosts final loop', viewingPostId)
+            return (
+              viewingPostId ?
+                post['id'] === viewingPostId && <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
+                :
+                <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
+            )
           })}
         </ul>
       </div>

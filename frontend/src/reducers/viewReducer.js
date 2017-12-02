@@ -1,9 +1,9 @@
 import { SET_VIEW_CATEGORY, SET_VIEW_POST_ID } from '../actions/viewAction'
 
 const initialPostState = {
-  viewingPage: "",
-  viewingCategory: "",
-  viewingPostId: ""
+  viewingPage: null,
+  viewingCategory: null,
+  viewingPostId: null
 }
 
 function viewReducer(state = initialPostState, action) {

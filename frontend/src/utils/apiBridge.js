@@ -1,7 +1,8 @@
 import * as PostAction from '../actions/postAction'
 import * as CommentAction from '../actions/commentAction'
 
-export function deletePost(props, postId) {
+
+export const deletePost = (props, postId) => {
   props.dispatch(PostAction.deletePost(postId)).then(() => {
     console.log('Success-Deleted a post')
   })
@@ -11,3 +12,4 @@ export function deletePost(props, postId) {
       props.dispatch(CommentAction.deleteComment_(commentId))
   })
 }
+
