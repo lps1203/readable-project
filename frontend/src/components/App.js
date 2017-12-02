@@ -162,8 +162,19 @@ class App extends Component {
     }
   }
 
-  handleClick = (category) => {
+  componentWillReceiveProps(nextProps) {
+    const category = nextProps.views.viewingCategory
+    this.setState({
+      home: {},
+      react: {},
+      redux: {},
+      udacity: {}        
+    })
+    category !== null && 
+      this.setState({ [category]: { borderBottom: 'thin solid black' } })
+  }
 
+  handleClick = (category) => {
     this.setState({
       home: {},
       react: {},

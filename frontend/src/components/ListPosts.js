@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PostDetails from './PostDetails'
 import { connect } from 'react-redux'
 import { Link, Route, Redirect } from 'react-router-dom'
 import ListOnePost from './ListOnePost'
@@ -9,6 +10,10 @@ class ListPosts extends Component {
 
   state = {
     sortByDate: false,
+  }
+
+  componentWillMount() {
+    this.props.dispatch(setViewCategory(this.props.match.params.category))
   }
 
   handleOnChange = (event) => {
@@ -66,7 +71,8 @@ class ListPosts extends Component {
             console.log('viewingPostId in ListPosts final loop', viewingPostId)
             return (
               viewingPostId ?
-                post['id'] === viewingPostId && <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
+                post['id'] === viewingPostId && <PostDetails postId={viewingPostId}/>
+                // post['id'] === viewingPostId && <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
                 :
                 <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
             )

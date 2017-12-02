@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setViewPostId } from '../actions/viewAction'
+import { setViewPostId, setViewCategory } from '../actions/viewAction'
 
 class PostDetails extends Component {
 
   componentWillMount() {
-    this.props.dispatch(setViewPostId(this.props.match.params.postId))
+    this.props.postId ?
+      this.props.dispatch(setViewPostId(this.props.postId))
+      :
+      this.props.dispatch(setViewPostId(this.props.match.params.postId))
+    this.props.dispatch(setViewCategory(null))
   }
 
   render() {
-    const { postId } = this.props.match.params
+    const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
     return (
       <div>
         {console.log('PostDetails', postId)}
