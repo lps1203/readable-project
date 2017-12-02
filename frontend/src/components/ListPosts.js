@@ -67,7 +67,7 @@ class ListPosts extends Component {
         <ul>
           {postList.map(post => {
             console.log(post['id'])
-            return <li key={post['id']}><ListOnePost postId={post['id']}/></li>
+            return <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
           })}
         </ul>
       </div>
