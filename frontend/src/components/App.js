@@ -11,8 +11,7 @@ import '../app.css'
 class App extends Component {
 
   /*********** 
-  After "componentDidMount" is executed the redux "store" will hold the following 
-  shape (not necessarily the content, just the shape):
+  The redux "store" will hold the following shape (not necessarily the content, just the shape):
        
   store = { 
             view: {

@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Vote from './Vote'
 import fancyTimestamp from 'fancy-timestamp'
-import { deletePost } from '../utils/apiBridge'
+import * as APIBridge from '../utils/apiBridge'
 import PostDetails from './PostDetails'
 import { setViewPostId } from '../actions/viewAction'
 // import { deleteComment_ } from '../actions/commentAction'
@@ -46,10 +46,10 @@ class ListOnePost extends Component {
           </p>
           <div className="btns">
             <button className="edit btn">Edit</button>
-            <button className="delete btn" onClick={() => deletePost(this.props, postId)}>Delete</button>
-            <button className="comment btn">
+            <button className="delete btn" onClick={() => APIBridge.deletePost(this.props, postId)}>Delete</button>
+            {/* <button className="comment btn">
               <Link to={`/${category}/${postId}`} onClick={this.handleOnClick}>Comments</Link>
-            </button>
+            </button> */}
           </div>
           <Route path={`/${category}/:postId`} component={PostDetails}/>
         </div>

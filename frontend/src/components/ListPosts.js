@@ -29,18 +29,23 @@ class ListPosts extends Component {
     const postList = []
     return (
       <div>
-        <div className="sort">
-          <div>
-            <label className="sort-label">List order</label>
-            <select id="sortOrder" name="sortList" onChange={this.handleOnChange}>
-              <option value="Popular">Most popular first</option>
-              <option value="Newest">Newest first</option>
-            </select>
-          </div>
-          <div>
-            <button>New Post</button>
-          </div>
-        </div>
+        {
+          viewingPostId === null &&
+          (
+            <div className="sort">
+              <div>
+                <label className="sort-label">List order</label>
+                <select id="sortOrder" name="sortList" onChange={this.handleOnChange}>
+                  <option value="Popular">Most popular first</option>
+                  <option value="Newest">Newest first</option>
+                </select>
+              </div>
+              <div>
+                <button id="post-btn">New Post</button>
+              </div>
+            </div>
+          )
+        }
         {/* Create an arrray of post objects */}
         { 
           (() => {
@@ -68,11 +73,9 @@ class ListPosts extends Component {
         }
         <ul>
           {postList.map(post => {
-            console.log('viewingPostId in ListPosts final loop', viewingPostId)
             return (
               viewingPostId ?
                 post['id'] === viewingPostId && <PostDetails postId={viewingPostId}/>
-                // post['id'] === viewingPostId && <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
                 :
                 <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
             )

@@ -36,7 +36,7 @@ ul {
   float: left;
 }
 
-.sort div button {
+#post-btn {
   margin-left: 390px;
   height: 23px;
   width: 80px;
@@ -45,6 +45,17 @@ ul {
   background-color: #efefef;
   border: 1px solid #999999;
 }
+
+#comment-btn {
+  margin-left: 390px;
+  height: 23px;
+  width: 118px;
+  font-size: 90%;
+  font-weight: 500;
+  background-color: #efefef;
+  border: 1px solid #999999;
+}
+
 .one-post {
   margin-left: 20px;
   margin-top: 0px;
@@ -68,7 +79,7 @@ ul {
   margin-left: 20px;
 }
 .title {
-  font-family: georgia, serif;
+  font-family: Georgia, serif;
   font-size: 106%;
   font-weight: 600;
   margin: 0px;
@@ -79,8 +90,17 @@ ul {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.title-postdetails {
+  font-family: Georgia, serif;
+  font-size: 106%;
+  font-weight: 600;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  line-height: 130%;
+}
 .body {
-  font-family: georgia, serif;
+  font-family: Georgia, serif;
   font-size: 90%;
   font-weight: 300;
   margin: 0px;
@@ -90,6 +110,16 @@ ul {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.body-postdetails {
+  margin-top: 5px;
+  margin-bottom: 8px;
+  font-family: Georgia, serif;
+  font-size: 95%;
+  font-weight: 300;
+  padding: 0px;
+  border: 0px;    
+  line-height: 130%;
 }
 .author {
   margin: 0px;
