@@ -37,6 +37,12 @@ class PostDetails extends Component {
     this.props.dispatch(setViewCategory(null))
   }
 
+  addComment = () => {
+    const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
+    APIBridge.addComment(this.props, postId, this.body.value, this.author.value)
+    this.closeModal()
+  }
+  
   render() {
     const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
     const { commentCount, title, body, author, timestamp  } = this.props.posts[postId]
@@ -105,7 +111,7 @@ class PostDetails extends Component {
             <br/>
             <button 
               className="send" 
-              onClick={() => APIBridge.addComment(this.props, postId, this.body.value, this.author.value)}
+              onClick={this.addComment}
             >
               Send
             </button>
