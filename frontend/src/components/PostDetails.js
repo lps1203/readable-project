@@ -88,21 +88,27 @@ class PostDetails extends Component {
           onRequestClose={this.closeModal}
           style={modalStyles}
           contentLabel="Comment Modal"
+          ariaHideApp={false}
         >
           <div className="modal">
             <button onClick={this.closeModal} className="close-btn">X close</button>
             <br/>
             <h3 className="title">Comment</h3>
             <br/>
-            <label for="author" className="label1">Name</label>
+            <label className="label1">Name</label>
             <br/>
             <input id="author" name="author" placeholder="Please enter your name here" ref={input => this.author = input}/>
             <br/>
-            <label for="body" className="label2">Comment</label>
+            <label className="label2">Comment</label>
             <br/>
             <textarea id="body" name="body" placeholder="Please enter your comment here" ref={input => this.body = input}></textarea>
             <br/>
-            <button className="send" onClick={this.addComment}>Send</button>
+            <button 
+              className="send" 
+              onClick={() => APIBridge.addComment(this.props, postId, this.body.value, this.author.value)}
+            >
+              Send
+            </button>
           </div>
         </Modal>
 

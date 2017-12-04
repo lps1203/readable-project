@@ -8,6 +8,7 @@ export const VOTE_ON_POST = 'VOTE_ON_POST'
 export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const DECREMENT_COMMENT_COUNT = 'DECREMENT_COMMENT_COUNT'
+export const INCREMENT_COMMENT_COUNT = 'INCREMENT_COMMENT_COUNT'
 
 function getAllPosts_(posts) {
   return {
@@ -128,6 +129,13 @@ export function deletePost(postId) {
 export function decrementCommentCount(postId) {
   return {
     type: DECREMENT_COMMENT_COUNT,
+    postId
+  }
+}
+
+export function incrementCommentCount(postId) {
+  return {
+    type: INCREMENT_COMMENT_COUNT,
     postId
   }
 }

@@ -17,3 +17,9 @@ export const deleteComment = (props, commentId, parentId) => {
   props.dispatch(CommentAction.deleteComment(commentId))
   props.dispatch(PostAction.decrementCommentCount(parentId))
 }
+
+export const addComment = (props, postId, body, author) => {
+  console.log('&&&&&&&&&&&&&&&&&&&&&&&', postId, body, author)
+  props.dispatch(CommentAction.addCommentToPost(postId, body, author))
+  props.dispatch(PostAction.incrementCommentCount(postId)) 
+}
