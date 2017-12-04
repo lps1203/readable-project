@@ -15,9 +15,9 @@ class App extends Component {
        
   store = { 
             view: {
-                    viewingPage: "",
-                    viewingCategory: "",
-                    viewingPostId: ""
+                    viewingCategory: null,
+                    viewingPostId: null,
+                    viewingCommentId: null
                   },
             category: [ 'react', 'redux', 'udacity' ],
             post: {

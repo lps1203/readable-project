@@ -4,23 +4,36 @@ import Vote from './Vote'
 import fancyTimestamp from 'fancy-timestamp'
 import * as APIBridge from '../utils/apiBridge'
 import { connect } from 'react-redux'
-import { setViewPostId, setViewCategory } from '../actions/viewAction'
+import { setViewPostId, setViewCategory, setViewCommentId } from '../actions/viewAction'
+import { editComment } from '../actions/commentAction'
 import sortBy from 'sort-by'
 import Modal from 'react-modal'
 
 class PostDetails extends Component {
 
   state = {
-    modalIsOpen: false
+    modalIsOpen: false,
+    isEdit: false
   }
 
-  openModal = () => {
+  openModal = (status) => {
+    if (status !=='new') {
+      this.setState({ isEdit: true })
+    } else {
+      this.props.dispatch(setViewCommentId(null))
+    }
     this.setState({
       modalIsOpen: true
     })
   }
 
   afterOpenModal = () => {
+    if (this.state.isEdit) {
+      const commentId = this.props.views.viewingCommentId
+      const { body, author } = this.props.comments[commentId]
+      this.body.value = body
+      this.author.value = author
+    }
   }
 
   closeModal = () => {
@@ -39,8 +52,19 @@ class PostDetails extends Component {
 
   addComment = () => {
     const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
-    APIBridge.addComment(this.props, postId, this.body.value, this.author.value)
+    const commentId = this.props.views.viewingCommentId
+    if (this.state.isEdit) {
+      this.props.dispatch(editComment(commentId, this.body.value)).then(() => {
+        console.log('Success-Edited a comment')    
+      })
+    } else {
+      APIBridge.addComment(this.props, postId, this.body.value, this.author.value)     
+    }
     this.closeModal()
+  }
+
+  editPost = () => {
+    this.openModal()
   }
 
   render() {
@@ -63,7 +87,7 @@ class PostDetails extends Component {
         <div className="post">
           <div className="sort">
             <div>
-              <button id="comment-btn" onClick={this.openModal}>New Comment</button>
+              <button id="comment-btn" onClick={() => this.openModal('new')}>New Comment</button>
             </div>
           </div>
           <div className="one-post">
@@ -78,7 +102,7 @@ class PostDetails extends Component {
                 <span className="poster">{author}</span> - <span className="time">{fancyTimestamp(timestamp, true)}</span>
               </p>
               <div className="btns">
-                <button className="edit btn">Edit</button>
+                <button className="edit btn" onClick={this.editPost}>Edit</button>
                 <button className="delete btn" onClick={() => APIBridge.deletePost(this.props, postId)}>Delete</button>
               </div>
             </div>
@@ -131,7 +155,7 @@ class PostDetails extends Component {
         <div>
           {
             commentList.map(comment => (
-              <ListOneComment commentId={comment['id']}/>
+              <ListOneComment commentId={comment['id']} openModal={this.openModal}/>
             ))
           }
         </div>

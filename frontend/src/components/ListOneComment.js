@@ -4,9 +4,13 @@ import Vote from './Vote'
 import fancyTimestamp from 'fancy-timestamp'
 import * as APIBridge from '../utils/apiBridge'
 import { connect } from 'react-redux'
+import { setViewCommentId } from '../actions/viewAction'
 
 class ListOneComment extends Component {
-
+  editComment = () => {
+    this.props.dispatch(setViewCommentId(this.props.commentId))
+    this.props.openModal()
+  }
   render() { 
     const { commentId, comments } = this.props
     const { body, author, timestamp, parentId } = comments[commentId]
@@ -18,7 +22,7 @@ class ListOneComment extends Component {
             <span className="poster">{author}</span> - <span className="time">{fancyTimestamp(timestamp, true)}</span>
           </p>
           <div className="btns">
-            <button className="edit btn">Edit</button>
+            <button className="edit btn" onClick={this.editComment}>Edit</button>
             <button className="delete btn" onClick={() => APIBridge.deleteComment(this.props, commentId, parentId)}>Delete</button>
           </div>
         </div>

@@ -1,13 +1,13 @@
-import { SET_VIEW_CATEGORY, SET_VIEW_POST_ID } from '../actions/viewAction'
+import { SET_VIEW_CATEGORY, SET_VIEW_POST_ID, SET_VIEW_COMMENT_ID } from '../actions/viewAction'
 
 const initialPostState = {
-  viewingPage: null,
   viewingCategory: null,
-  viewingPostId: null
+  viewingPostId: null,
+  viewingCommentId: null
 }
 
 function viewReducer(state = initialPostState, action) {
-  const { category, postId } = action
+  const { category, postId, commentId } = action
   switch (action.type) {
     case SET_VIEW_CATEGORY:
       return {
@@ -18,6 +18,11 @@ function viewReducer(state = initialPostState, action) {
       return {
         ...state,
         viewingPostId: postId
+      }
+    case SET_VIEW_COMMENT_ID:
+      return {
+        ...state,
+        viewingCommentId: commentId
       }
     default:
       return state
