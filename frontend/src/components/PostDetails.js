@@ -42,7 +42,7 @@ class PostDetails extends Component {
     APIBridge.addComment(this.props, postId, this.body.value, this.author.value)
     this.closeModal()
   }
-  
+
   render() {
     const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
     const { commentCount, title, body, author, timestamp  } = this.props.posts[postId]
@@ -109,12 +109,7 @@ class PostDetails extends Component {
             <br/>
             <textarea id="body" name="body" placeholder="Please enter your comment here" ref={input => this.body = input}></textarea>
             <br/>
-            <button 
-              className="send" 
-              onClick={this.addComment}
-            >
-              Send
-            </button>
+            <button className="send" onClick={this.addComment}>Send</button>
           </div>
         </Modal>
 
@@ -143,7 +138,6 @@ class PostDetails extends Component {
       </div>
     )
   }
-
 }
 
 const mapStateToProps = ({ view, category, post, comment }) => ({
