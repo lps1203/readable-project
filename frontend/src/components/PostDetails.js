@@ -9,12 +9,21 @@ import sortBy from 'sort-by'
 
 class PostDetails extends Component {
 
+  state = {
+    commentInput: false
+  }
   componentWillMount() {
     this.props.postId ?
       this.props.dispatch(setViewPostId(this.props.postId))
       :
       this.props.dispatch(setViewPostId(this.props.match.params.postId))
     this.props.dispatch(setViewCategory(null))
+  }
+
+  addComment = () => {
+    this.setState({
+      commentInput: true
+    })
   }
 
   render() {
@@ -34,7 +43,7 @@ class PostDetails extends Component {
               </select>
             </div> */}
             <div>
-              <button id="comment-btn">New Comment</button>
+              <button id="comment-btn" onClick="this.addComment">New Comment</button>
             </div>
           </div>
           <div className="one-post">
@@ -59,10 +68,22 @@ class PostDetails extends Component {
           </div>
         </div>
         <div className="gap"><hr/></div>
+        {/* Sort comments by date */}
+        { 
+          (() => {
+            Object.keys(comments).map(commentId => 
+              comments[commentId]['parentId'] === postId && commentList.push(comments[commentId]))
+          })()
+        }
+        {
+          (() => {
+            commentList.sort(sortBy('-timestamp'))
+          })()
+        }
         <div>
           {
-            Object.keys(comments).map(commentId => (
-              comments[commentId]['parentId'] === postId && <ListOneComment commentId={commentId}/>
+            commentList.map(comment => (
+              <ListOneComment commentId={comment['id']}/>
             ))
           }
         </div>
