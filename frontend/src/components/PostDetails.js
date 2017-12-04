@@ -38,7 +38,8 @@ class PostDetails extends Component {
 
   closeModal = () => {
     this.setState({
-      modalIsOpen: false
+      modalIsOpen: false,
+      isEdit: false
     })
   }
 
@@ -60,6 +61,9 @@ class PostDetails extends Component {
     } else {
       APIBridge.addComment(this.props, postId, this.body.value, this.author.value)     
     }
+    this.setState({
+      isEdit: false
+    })
     this.closeModal()
   }
 
