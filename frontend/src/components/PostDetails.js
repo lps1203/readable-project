@@ -6,12 +6,31 @@ import * as APIBridge from '../utils/apiBridge'
 import { connect } from 'react-redux'
 import { setViewPostId, setViewCategory } from '../actions/viewAction'
 import sortBy from 'sort-by'
+import Modal from 'react-modal'
 
 class PostDetails extends Component {
 
   state = {
-    commentInput: false
+    modalIsOpen: false
   }
+
+  openModal = () => {
+    this.setState({
+      modalIsOpen: true
+    })
+  }
+
+  afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00'
+  }
+
+  closeModal = () => {
+    this.setState({
+      modalIsOpen: false
+    })
+  }
+
   componentWillMount() {
     this.props.postId ?
       this.props.dispatch(setViewPostId(this.props.postId))
@@ -20,30 +39,27 @@ class PostDetails extends Component {
     this.props.dispatch(setViewCategory(null))
   }
 
-  addComment = () => {
-    this.setState({
-      commentInput: true
-    })
-  }
-
   render() {
     const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
     const { commentCount, title, body, author, timestamp  } = this.props.posts[postId]
     const { comments } = this.props
     const commentList = []
+    const modalStyles = {
+      content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-70%, -70%)'
+      }
+    }
     return (
       <div>
         <div className="post">
           <div className="sort">
-            {/* <div>
-              <label className="sort-label">List order</label>
-              <select id="sortOrder" name="sortList" onChange={this.handleOnChange}>
-                <option value="Popular">Most popular first</option>
-                <option value="Newest">Newest first</option>
-              </select>
-            </div> */}
             <div>
-              <button id="comment-btn" onClick="this.addComment">New Comment</button>
+              <button id="comment-btn" onClick={this.openModal}>New Comment</button>
             </div>
           </div>
           <div className="one-post">
@@ -67,6 +83,31 @@ class PostDetails extends Component {
             </div>
           </div>
         </div>
+
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={modalStyles}
+          contentLabel="Example Modal"
+        >
+ 
+          <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+          <button onClick={this.closeModal} style={{ float: 'right'}}>close</button>
+          <div>I am a modal</div>
+          <form>
+            <input />
+            <button>tab navigation</button>
+            <button>stays</button>
+            <button>inside</button>
+            <button>the modal</button>
+          </form>
+          <div style={{ height: 200, width: 400, backgroundColor: '#efefef' }}>
+          </div>
+        </Modal>
+
+
+
         <div className="gap"><hr/></div>
         {/* Sort comments by date */}
         { 
