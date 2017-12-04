@@ -13,6 +13,7 @@ export const deletePost = (props, postId) => {
   })
 }
 
-export const deleteComment = (props, commentId) => {
-  props.dispatch(CommentAction.deleteComment_(commentId))
+export const deleteComment = (props, commentId, parentId) => {
+  props.dispatch(CommentAction.deleteComment(commentId))
+  props.dispatch(PostAction.decrementCommentCount(parentId))
 }

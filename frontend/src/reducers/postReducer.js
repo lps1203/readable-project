@@ -2,12 +2,12 @@ import { GET_ALL_POSTS } from '../actions/postAction'
 import { GET_POSTS_FROM_CATEGORY } from '../actions/postAction'
 import { ADD_POST_TO_CATEGORY } from '../actions/postAction'
 import { GET_DETAILS_OF_POST } from '../actions/postAction'
-import { EDIT_POST, VOTE_ON_POST, DELETE_POST } from '../actions/postAction'
+import { EDIT_POST, VOTE_ON_POST, DELETE_POST, DECREMENT_COMMENT_COUNT } from '../actions/postAction'
 
 const initialPostState = {}
 
 function postReducer(state = initialPostState, action) {
-  const { posts, newPost, editedPost, votedPost, deletedPostId } = action
+  const { posts, newPost, editedPost, votedPost, deletedPostId, postId } = action
   switch (action.type) {
     case GET_ALL_POSTS:
       return posts
@@ -32,6 +32,9 @@ function postReducer(state = initialPostState, action) {
       }
       delete newState[deletedPostId]
       return newState
+    case DECREMENT_COMMENT_COUNT:
+      state[postId]['commentCount']--
+      return state
     default:
       return state
   }

@@ -9,7 +9,7 @@ class ListOneComment extends Component {
 
   render() { 
     const { commentId, comments } = this.props
-    const { body, author, timestamp } = comments[commentId]
+    const { body, author, timestamp, parentId } = comments[commentId]
     return (
       <div className="one-comment">
         <div className="comment-display">
@@ -19,7 +19,7 @@ class ListOneComment extends Component {
           </p>
           <div className="btns">
             <button className="edit btn">Edit</button>
-            <button className="delete btn" onClick={() => APIBridge.deleteComment(this.props, commentId)}>Delete</button>
+            <button className="delete btn" onClick={() => APIBridge.deleteComment(this.props, commentId, parentId)}>Delete</button>
           </div>
         </div>
         <div className="vote-display">

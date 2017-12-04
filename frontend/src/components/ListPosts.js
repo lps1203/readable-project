@@ -75,7 +75,8 @@ class ListPosts extends Component {
           {postList.map(post => {
             return (
               viewingPostId ?
-                post['id'] === viewingPostId && <PostDetails postId={viewingPostId}/>
+                post['id'] === viewingPostId &&
+                  <PostDetails postId={viewingPostId}/>
                 :
                 <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
             )

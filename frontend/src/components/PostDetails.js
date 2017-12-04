@@ -5,6 +5,7 @@ import fancyTimestamp from 'fancy-timestamp'
 import * as APIBridge from '../utils/apiBridge'
 import { connect } from 'react-redux'
 import { setViewPostId, setViewCategory } from '../actions/viewAction'
+import sortBy from 'sort-by'
 
 class PostDetails extends Component {
 
@@ -20,17 +21,18 @@ class PostDetails extends Component {
     const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
     const { commentCount, title, body, author, timestamp  } = this.props.posts[postId]
     const { comments } = this.props
+    const commentList = []
     return (
       <div>
         <div className="post">
           <div className="sort">
-            <div>
+            {/* <div>
               <label className="sort-label">List order</label>
               <select id="sortOrder" name="sortList" onChange={this.handleOnChange}>
                 <option value="Popular">Most popular first</option>
                 <option value="Newest">Newest first</option>
               </select>
-            </div>
+            </div> */}
             <div>
               <button id="comment-btn">New Comment</button>
             </div>
@@ -60,8 +62,7 @@ class PostDetails extends Component {
         <div>
           {
             Object.keys(comments).map(commentId => (
-              comments[commentId]['parentId'] === postId &&
-                (<ListOneComment commentId={commentId}/>)
+              comments[commentId]['parentId'] === postId && <ListOneComment commentId={commentId}/>
             ))
           }
         </div>
