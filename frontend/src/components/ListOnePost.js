@@ -47,9 +47,6 @@ class ListOnePost extends Component {
           <div className="btns">
             <button className="edit btn">Edit</button>
             <button className="delete btn" onClick={() => APIBridge.deletePost(this.props, postId)}>Delete</button>
-            {/* <button className="comment btn">
-              <Link to={`/${category}/${postId}`} onClick={this.handleOnClick}>Comments</Link>
-            </button> */}
           </div>
           <Route path={`/${category}/:postId`} component={PostDetails}/>
         </div>

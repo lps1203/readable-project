@@ -49,8 +49,8 @@ ul {
 #comment-btn {
   margin-left: 390px;
   height: 23px;
-  width: 118px;
-  font-size: 90%;
+  width: 110px;
+  font-size: 87%;
   font-weight: 500;
   background-color: #efefef;
   border: 1px solid #999999;
@@ -58,26 +58,42 @@ ul {
 
 .one-post {
   margin-left: 20px;
-  margin-top: 0px;
+  margin-top: 20px;
   width: 700px;
-  height: 120px;
 }
-.comment-count-display {
+.one-comment {
+  margin-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 800px;
+}
+.comment-count-display, .comment-number-display {
   background-color: white;
   width: 80px;
-  height: 100px;
+  /* height: 100px; */
   float: left;
+  clear: left;
   margin: 10px;  
 }
 .post-display {
   background-color: white;
   width: 450px;
-  height: 100px;
+  /* height: 100px; */
   float: left;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-bottom: 28px;
   margin-left: 20px;
 }
+.comment-display {
+  background-color: white;
+  width: 430px;
+  /* height: 100px; */
+  float: left;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  margin-left: 140px;
+} 
+
 .title {
   font-family: Georgia, serif;
   font-size: 106%;
@@ -90,7 +106,7 @@ ul {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.title-postdetails {
+.title-postdetails, .title-comment {
   font-family: Georgia, serif;
   font-size: 106%;
   font-weight: 600;
@@ -112,8 +128,8 @@ ul {
   text-overflow: ellipsis;
 }
 .body-postdetails {
-  margin-top: 5px;
-  margin-bottom: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   font-family: Georgia, serif;
   font-size: 95%;
   font-weight: 300;
@@ -121,12 +137,22 @@ ul {
   border: 0px;    
   line-height: 130%;
 }
+.body-comment {
+  margin-top: 0px;
+  margin-bottom: 3px;
+  font-family: Georgia, serif;
+  font-size: 95%;
+  font-weight: 300;
+  padding: 0px;
+  border: 0px;    
+  line-height: 110%;
+}
 .author {
   margin: 0px;
   padding: 0px;
   font-size: 90%;
   font-style: italic;
-  height: 17px;
+  /* height: 17px; */
   overflow: hidden;
 }
 .author .poster {
@@ -164,9 +190,9 @@ ul {
 .vote {
   background-color: white;
   width: 100px;
-  height: 100px;
+  /* height: 100px; */
   float: left;
-  margin: 10px;
+  margin-left: 10px;
 }
 .arrow {
   height: 18px;
@@ -176,7 +202,7 @@ ul {
 .vote-left {
   float: left;
   width: 18px;
-  height: 90px;
+  /* height: 90px; */
   background-color: white;
   margin-left: 5px;
 }
@@ -201,4 +227,22 @@ ul {
   border: 0px;
   font-size: 80%;
   text-align: center;
+}
+
+
+.gap {
+  height: 5px;
+  width: 680px;
+  background-color: white;
+  float: left;
+  clear: left;
+  margin-top: -15px;
+}
+
+hr {
+  display: block;
+  margin-left: 140px;
+  border-style: inset;
+  border-width: 1px;
+  border-color: #efefef
 }

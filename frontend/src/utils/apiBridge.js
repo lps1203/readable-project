@@ -13,3 +13,6 @@ export const deletePost = (props, postId) => {
   })
 }
 
+export const deleteComment = (props, commentId) => {
+  props.dispatch(CommentAction.deleteComment_(commentId))
+}

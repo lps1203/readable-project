@@ -60,7 +60,7 @@ class ListPosts extends Component {
                     postList.push(posts[postId])
                   )
               )
-            })()
+          })()
         }
         {/* Sort by time or vote score */}
         { 
