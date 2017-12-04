@@ -131,7 +131,12 @@ class PostDetails extends Component {
             <br/>
             <label className="label1">Name</label>
             <br/>
-            <input id="author" name="author" placeholder="Please enter your name here" ref={input => this.author = input}/>
+            {
+              this.state.isEdit ?
+                <input id="author" name="author" disabled ref={input => this.author = input}/>
+                :
+                <input id="author" name="author" placeholder="Please enter your name here" ref={input => this.author = input}/>
+            }
             <br/>
             <label className="label2">Comment</label>
             <br/>
