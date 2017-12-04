@@ -21,8 +21,6 @@ class PostDetails extends Component {
   }
 
   afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00'
   }
 
   closeModal = () => {
@@ -89,20 +87,22 @@ class PostDetails extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={modalStyles}
-          contentLabel="Example Modal"
+          contentLabel="Comment Modal"
         >
- 
-          <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-          <button onClick={this.closeModal} style={{ float: 'right'}}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
-          <div style={{ height: 200, width: 400, backgroundColor: '#efefef' }}>
+          <div className="modal">
+            <button onClick={this.closeModal} className="close-btn">X close</button>
+            <br/>
+            <h3 className="title">Comment</h3>
+            <br/>
+            <label for="author" className="label1">Name</label>
+            <br/>
+            <input id="author" name="author" placeholder="Please enter your name here" ref={input => this.author = input}/>
+            <br/>
+            <label for="body" className="label2">Comment</label>
+            <br/>
+            <textarea id="body" name="body" placeholder="Please enter your comment here" ref={input => this.body = input}></textarea>
+            <br/>
+            <button className="send" onClick={this.addComment}>Send</button>
           </div>
         </Modal>
 
