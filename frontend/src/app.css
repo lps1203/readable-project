@@ -36,6 +36,12 @@ ul {
   float: left;
 }
 
+#sort-order {
+  font-size: 83%;
+  margin-left: 5px;
+  background-color: #eeeeee;
+  height: 25px;
+}
 #post-btn {
   margin-left: 390px;
   height: 23px;
@@ -47,7 +53,7 @@ ul {
 }
 
 #comment-btn {
-  margin-left: 550px;
+  margin-left: 580px;
   height: 23px;
   width: 110px;
   font-size: 87%;
@@ -73,7 +79,7 @@ ul {
   /* height: 100px; */
   float: left;
   clear: left;
-  margin: 10px;  
+  margin: 0px 10px 10px 10px; 
 }
 .post-display {
   background-color: white;
@@ -249,8 +255,9 @@ hr {
 
 .modal {
   width: 400px;
-  height: 400px;
+  height: 500px;
 }
+
 .modal .close-btn {
   background-color: white;
   float: right;
@@ -263,6 +270,13 @@ hr {
   color: #333333;
   height: 30px;
   padding: 0px;
+}
+
+.modal #category-selection {
+  margin-left: 10px;
+  font-size: 90%;
+  margin-bottom: 25px;
+  background-color: #eeeeee;
 }
 
 .modal .label1 {
@@ -281,6 +295,17 @@ hr {
   font-family: Georgia, serif;
   font-size: 95%;
   border-bottom: 1px solid #aaaaaa;
+}
+
+.modal #title {
+  margin: 5px 0px 20px 15px;
+  padding-left: 5px;
+  /* background-color: #efefef; */
+  height: 25px;
+  width: 350px;
+  font-family: Georgia, serif;
+  font-size: 95%;
+  border-bottom: 1px solid #aaaaaa;  
 }
 .modal .label2 {
   font-family: sans-serif;

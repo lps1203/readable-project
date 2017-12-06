@@ -67,10 +67,6 @@ class PostDetails extends Component {
     this.closeModal()
   }
 
-  editPost = () => {
-    this.openModal()
-  }
-
   render() {
     const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
     const { commentCount, title, body, author, timestamp  } = this.props.posts[postId]
@@ -106,7 +102,7 @@ class PostDetails extends Component {
                 <span className="poster">{author}</span> - <span className="time">{fancyTimestamp(timestamp, true)}</span>
               </p>
               <div className="btns">
-                <button className="edit btn" onClick={this.editPost}>Edit</button>
+                <button className="edit btn">Edit</button>
                 <button className="delete btn" onClick={() => APIBridge.deletePost(this.props, postId)}>Delete</button>
               </div>
             </div>
@@ -133,7 +129,7 @@ class PostDetails extends Component {
             <br/>
             {
               this.state.isEdit ?
-                <input id="author" name="author" disabled ref={input => this.author = input}/>
+                <input id="author" name="author" style={{ color: '#aaaaaa'}}disabled ref={input => this.author = input}/>
                 :
                 <input id="author" name="author" placeholder="Please enter your name here" ref={input => this.author = input}/>
             }

@@ -32,7 +32,9 @@ class ListOnePost extends Component {
       <div className="one-post">
         <div className="comment-count-display">
           <p className="comment-score">{post['commentCount']}</p>
-          <p className="comment-score-label">Comments</p>
+          <p className="comment-score-label">
+            <Link to={`/${category}/${postId}`} onClick={this.handleOnClick}>Comments</Link>
+          </p>
         </div>
         <div className="post-display">
           <p className="title">
