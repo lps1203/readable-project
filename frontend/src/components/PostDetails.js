@@ -4,7 +4,7 @@ import Vote from './Vote'
 import fancyTimestamp from 'fancy-timestamp'
 import * as APIBridge from '../utils/apiBridge'
 import { connect } from 'react-redux'
-import { setViewPostId, setViewCategory, setViewCommentId } from '../actions/viewAction'
+import { setViewPostId, setViewCategory, setViewCommentId, setEditPostId } from '../actions/viewAction'
 import { editComment } from '../actions/commentAction'
 import sortBy from 'sort-by'
 import Modal from 'react-modal'
@@ -67,6 +67,12 @@ class PostDetails extends Component {
     this.closeModal()
   }
 
+  openEditModal = () => {
+    const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
+    this.props.dispatch(setEditPostId(postId))
+    this.props.openModalPost()
+  }
+
   render() {
     const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
     const { commentCount, title, body, author, timestamp  } = this.props.posts[postId]
@@ -102,7 +108,7 @@ class PostDetails extends Component {
                 <span className="poster">{author}</span> - <span className="time">{fancyTimestamp(timestamp, true)}</span>
               </p>
               <div className="btns">
-                <button className="edit btn">Edit</button>
+                <button className="edit btn" onClick={this.openEditModal}>Edit</button>
                 <button className="delete btn" onClick={() => APIBridge.deletePost(this.props, postId)}>Delete</button>
               </div>
             </div>

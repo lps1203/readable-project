@@ -17,7 +17,8 @@ class App extends Component {
             view: {
                     viewingCategory: null,
                     viewingPostId: null,
-                    viewingCommentId: null
+                    viewingCommentId: null,
+                    editingPostId: null
                   },
             category: [ 'react', 'redux', 'udacity' ],
             post: {

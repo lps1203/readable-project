@@ -42,10 +42,13 @@ class ListPosts extends Component {
 
   afterOpenModal = () => {
     if (this.state.isEdit) {
-      const postId = this.props.views.viewingPostId // viewingPostId exsists all the time? It does not
-      const { body, author } = this.props.comments[postId]
+      const postId = this.props.views.editingPostId
+      const { body, author, title, category } = this.props.posts[postId]
+      const selectCategory = document.getElementById('category-selection')
       this.body.value = body
       this.author.value = author
+      this.title.value = title
+      selectCategory.value = category
     }
   }
 
@@ -57,8 +60,8 @@ class ListPosts extends Component {
   }
 
   addPost = () => {
-    const postId = this.props.postId ? this.props.postId : this.props.match.params.postId
-    const commentId = this.props.views.viewingCommentId
+    const postId = this.props.views.editingPostId
+    // const commentId = this.props.views.viewingCommentId
     if (this.state.isEdit) {
       this.props.dispatch(editPost(postId, this.title.value, this.body.value)).then(() => {
         console.log('Success-Edited a post')    
@@ -125,27 +128,36 @@ class ListPosts extends Component {
             <h3 className="title">Post</h3>
             <br/>
             <label className='label1'>Category</label>
-            <select id="category-selection" name="category" onChange={this.handleSelection}>
-              <option>Pick one</option>
-              <option value="react">React</option>
-              <option value="redux">Redux</option>
-              <option value="udacity">Udacity</option>
-            </select>
+            {
+              this.state.isEdit ?
+                (
+                  <select id="category-selection" disabled name="category" onChange={this.handleSelection} style={{ color: '#aaaaaa'}}>
+                    <option>Pick one</option>
+                    <option value="react">React</option>
+                    <option value="redux">Redux</option>
+                    <option value="udacity">Udacity</option>
+                  </select>
+                )
+                :
+                (
+                  <select id="category-selection" name="category" onChange={this.handleSelection}>
+                    <option>Pick one</option>
+                    <option value="react">React</option>
+                    <option value="redux">Redux</option>
+                    <option value="udacity">Udacity</option>
+                  </select>
+                )
+            }
             <br/>
             <label className="label1">Title</label>
             <br/>
-            {
-              this.state.isEdit ?
-                <input id="title" name="title" disabled ref={input => this.author = input}/>
-                :
-                <input id="title" name="title" placeholder="Please enter your post's title here" ref={input => this.title = input}/>
-            }
+            <input id="title" name="title" placeholder="Please enter your post's title here" ref={input => this.title = input}/>
             <br/>
             <label className="label1">Name</label> 
             <br/> 
             {
               this.state.isEdit ?
-                <input id="author" name="author" disabled ref={input => this.author = input}/>
+                <input id="author" name="author" disabled ref={input => this.author = input} style={{ color: '#aaaaaa'}}/>
                 :
                 <input id="author" name="author" placeholder="Please enter your name here" ref={input => this.author = input}/>
             }
@@ -190,9 +202,9 @@ class ListPosts extends Component {
             return (
               viewingPostId ?
                 post['id'] === viewingPostId &&
-                  <PostDetails postId={viewingPostId}/>
+                  <PostDetails postId={viewingPostId} openModalPost={this.openModal}/>
                 :
-                <li key={post['id']}><ListOnePost postId={post['id']} category={posts[post['id']]['category']}/></li>
+                <li key={post['id']}><ListOnePost postId={post['id']} openModalPost={this.openModal} category={posts[post['id']]['category']}/></li>
             )
           })}
         </ul>

@@ -5,7 +5,7 @@ import Vote from './Vote'
 import fancyTimestamp from 'fancy-timestamp'
 import * as APIBridge from '../utils/apiBridge'
 import PostDetails from './PostDetails'
-import { setViewPostId } from '../actions/viewAction'
+import { setViewPostId, setEditPostId } from '../actions/viewAction'
 // import { deleteComment_ } from '../actions/commentAction'
 
 
@@ -25,6 +25,11 @@ class ListOnePost extends Component {
   handleOnClick = () => {
     this.props.dispatch(setViewPostId(this.props.postId))   
   }
+  openEditModal = () => {
+    this.props.dispatch(setEditPostId(this.props.postId))
+    this.props.openModalPost()
+  }
+
   render() {
     const { postId, category, posts } = this.props
     const post = posts[postId]
@@ -47,7 +52,7 @@ class ListOnePost extends Component {
             <span className="poster">{post['author']}</span> - <span className="time">{fancyTimestamp(post['timestamp'], true)}</span>
           </p>
           <div className="btns">
-            <button className="edit btn">Edit</button>
+            <button className="edit btn" onClick={this.openEditModal}>Edit</button>
             <button className="delete btn" onClick={() => APIBridge.deletePost(this.props, postId)}>Delete</button>
           </div>
           <Route path={`/${category}/:postId`} component={PostDetails}/>
