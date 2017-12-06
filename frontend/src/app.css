@@ -15,6 +15,11 @@
 ul {
   list-style-type: none;
 }
+
+ol {
+  list-style-type: none;  
+}
+
 .top-navi-list {
   display: inline;
   margin-right: 40px;

@@ -164,11 +164,13 @@ class PostDetails extends Component {
           })()
         }
         <div>
+          <ol>
           {
             commentList.map(comment => (
-              <ListOneComment commentId={comment['id']} openModal={this.openModal}/>
+              <li key={comment['id']}><ListOneComment commentId={comment['id']} openModal={this.openModal}/></li>
             ))
           }
+          </ol>
         </div>
       </div>
     )

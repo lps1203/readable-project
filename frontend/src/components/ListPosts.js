@@ -188,23 +188,24 @@ class ListPosts extends Component {
         {/* Sort by time or vote score */}
         { 
           (() => {
+            // console.log('sortByVotes: ', sortByVotes)
             sortByVotes ?
               postList.sort(sortBy('-voteScore'))
               :
               postList.sort(sortBy('-timestamp'))
           })()
         }
-        <ul>
+        <ol>
           {postList.map(post => {
             return (
               viewingPostId ?
                 post['id'] === viewingPostId &&
-                  <PostDetails postId={viewingPostId} openModalPost={this.openModal}/>
+                  <li key={viewingPostId}><PostDetails postId={viewingPostId} openModalPost={this.openModal}/></li>
                 :
                 <li key={post['id']}><ListOnePost postId={post['id']} openModalPost={this.openModal} category={posts[post['id']]['category']}/></li>
             )
           })}
-        </ul>
+        </ol>
       </div>
     )
   }
