@@ -3,7 +3,7 @@ import PostDetails from './PostDetails'
 import { connect } from 'react-redux'
 import { Link, Route, Redirect } from 'react-router-dom'
 import ListOnePost from './ListOnePost'
-import { setViewCategory, setViewPostId } from '../actions/viewAction'
+import { setViewCategory, setViewPostId, setSortMethod } from '../actions/viewAction'
 import sortBy from 'sort-by'
 import Modal from 'react-modal'
 import { addPostToCategory, editPost } from '../actions/postAction'
@@ -11,7 +11,6 @@ import { addPostToCategory, editPost } from '../actions/postAction'
 class ListPosts extends Component {
 
   state = {
-    sortByDate: false,
     modalIsOpen: false,
     isEdit: false,
     modalCategorySelected: ''
@@ -22,9 +21,7 @@ class ListPosts extends Component {
   }
 
   handleOnChange = (event) => {
-    this.setState({
-      sortByDate: event.target.value ==='Newest'
-    })  
+    this.props.dispatch(setSortMethod(event.target.value === 'popular'))
   }
   handleSelection = (event) => {
     this.setState({
@@ -78,7 +75,7 @@ class ListPosts extends Component {
   render() {
     const { category }  = this.props.match.params  
     const { categories, posts } = this.props
-    const { viewingPostId } = this.props.views
+    const { viewingPostId, sortByVotes } = this.props.views
     const postList = []
     const modalStyles = {
       content : {
@@ -99,8 +96,8 @@ class ListPosts extends Component {
               <div>
                 <label className="sort-label">List order</label>
                 <select id="sort-order" name="sortList" onChange={this.handleOnChange}>
-                  <option value="Popular">Most popular first</option>
-                  <option value="Newest">Newest first</option>
+                  <option value="popular">Most popular first</option>
+                  <option value="newest">Newest first</option>
                 </select>
               </div>
               <div>
@@ -191,10 +188,10 @@ class ListPosts extends Component {
         {/* Sort by time or vote score */}
         { 
           (() => {
-            this.state.sortByDate ?
-              postList.sort(sortBy('-timestamp'))
-              :
+            sortByVotes ?
               postList.sort(sortBy('-voteScore'))
+              :
+              postList.sort(sortBy('-timestamp'))
           })()
         }
         <ul>

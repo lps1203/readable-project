@@ -18,7 +18,8 @@ class App extends Component {
                     viewingCategory: null,
                     viewingPostId: null,
                     viewingCommentId: null,
-                    editingPostId: null
+                    editingPostId: null,
+                    sortByVotes: true
                   },
             category: [ 'react', 'redux', 'udacity' ],
             post: {
