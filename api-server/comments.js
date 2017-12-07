@@ -33,6 +33,16 @@ const defaultData = {
     voteScore: -5,
     deleted: false,
     parentDeleted: false
+  },
+  "8zku3ksbh8nnh8u1237ab": {
+    id: '8zku3ksbh8nnh8u1237ab',
+    parentId: "9in9ok3sq7mf1p21ln12",
+    timestamp: 1510211488000,
+    body: 'Love was such an easy game to play',
+    author: 'paul',
+    voteScore: 7,
+    deleted: false,
+    parentDeleted: false
   }
 }
 
