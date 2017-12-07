@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Route, Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setViewCategory, setViewPostId } from '../actions/viewAction'
 import ListPosts from './ListPosts'
+import { setViewCategory, setViewPostId } from '../actions/viewAction'
 import { getAllCategories } from '../actions/categoryAction'
-import { getAllPosts, addPostToCategory, editPost, voteOnPost, deletePost } from '../actions/postAction'
+import { getAllPosts } from '../actions/postAction'
 import { getCommentsFromPost } from '../actions/commentAction'
-import { addCommentToPost, editComment, voteOnComment, deleteComment, deleteComment_ } from '../actions/commentAction'
 import '../app.css'
+
+/*
+  Topmost user-defined component
+*/
 class App extends Component {
 
   /*********** 
@@ -71,66 +74,6 @@ class App extends Component {
           }
   
   ***********/
-
-  // addPost = () => {
-  //   const category = 'udacity'
-  //   const title = 'tttttttttttttt'
-  //   const body = 'bbbbbbbbbbbbbbbbbbb'
-  //   const author = 'aaaaaaa'
-  //   this.props.dispatch(addPostToCategory(category, title, body, author)).then(() => {
-  //     console.log('Success-Added a post!')
-  //   })
-  // }
-
-  // addComment = () => {                          
-  //   const parentId = "22222222222222222"
-  //   const body = 'This is the fisrt comment that will be added to the server'
-  //   const author = 'First Author'
-  //   this.props.dispatch(addCommentToPost(parentId, body, author)).then(() => {
-  //     console.log('Success-Added a comment')
-  //   })
-  // }
-
-  // editPost = () => {
-  //   const postId = "22222222222222222"
-  //   const title = "Today is the day"
-  //   const body = "So come home to me now. Won't matter anyhow."
-  //   this.props.dispatch(editPost(postId, title, body)).then(() => {
-  //     console.log('Success-Edited a post')    
-  //   })
-  // }
-
-  // editComment = () => {
-  //   const commentId = "8zzu4bsun805n8un48774"
-  //   const body = "Love is in the air......."
-  //   this.props.dispatch(editComment(commentId, body)).then(() => {
-  //     console.log('Success-Edited a comment')    
-  //   })
-  // }
-
-  // voteOnPost = () => {
-  //   const postId = "22222222222222222"
-  //   const vote = "downVote"
-  //   this.props.dispatch(voteOnPost(postId, vote)).then(() => {
-  //     console.log('Success-Voted on a post')       
-  //   })
-  // }
-  // voteOnComment = () => {
-  //   const commentId = "8tu4bsun805n8un48ve89"
-  //   const vote = "upVote"
-  //   this.props.dispatch(voteOnComment(commentId, vote)).then(() => {
-  //     console.log('Success-Voted on a comment')       
-  //   })
-  // }
-
-
-
-  // deleteComment = () => {
-  //   const commentId = "8tu4bsun805n8un48ve89"
-  //   this.props.dispatch(deleteComment(commentId)).then(() => {
-  //     console.log('Success-Deleted a comment')
-  //   })
-  // }
 
   state = {
     home: {},
@@ -215,10 +158,6 @@ class App extends Component {
             <Redirect to="/home"/>
           }/>
         </div>
-        {console.log(this.props.views)}
-        {console.log(this.props.categories)}
-        {console.log(this.props.posts)}
-        {console.log(this.props.comments)}
       </div>  
     )
   }

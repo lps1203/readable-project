@@ -1,4 +1,9 @@
-import { SET_VIEW_CATEGORY, SET_VIEW_POST_ID, SET_VIEW_COMMENT_ID, SET_EDIT_POST_ID, SET_SORT_METHOD } from '../actions/viewAction'
+import { SET_VIEW_CATEGORY, 
+         SET_VIEW_POST_ID, 
+         SET_VIEW_COMMENT_ID, 
+         SET_EDIT_POST_ID, 
+         SET_SORT_METHOD 
+        } from '../actions/viewAction'
 
 const initialPostState = {
   viewingCategory: null,

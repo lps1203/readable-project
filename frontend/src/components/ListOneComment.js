@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
-import Vote from './Vote'
-import fancyTimestamp from 'fancy-timestamp'
-import * as APIBridge from '../utils/apiBridge'
 import { connect } from 'react-redux'
+import fancyTimestamp from 'fancy-timestamp'
+import Vote from './Vote'
+import * as APIBridge from '../utils/bridgeToActions'
 import { setViewCommentId } from '../actions/viewAction'
 
+/*
+  This component lists a single comment
+*/
 class ListOneComment extends Component {
   editComment = () => {
     this.props.dispatch(setViewCommentId(this.props.commentId))

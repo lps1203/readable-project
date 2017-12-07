@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import PostDetails from './PostDetails'
 import { connect } from 'react-redux'
-import { Link, Route, Redirect } from 'react-router-dom'
-import ListOnePost from './ListOnePost'
-import { setViewCategory, setViewPostId, setSortMethod } from '../actions/viewAction'
 import sortBy from 'sort-by'
 import Modal from 'react-modal'
+import PostDetails from './PostDetails'
+import ListOnePost from './ListOnePost'
+import { setViewCategory, setSortMethod } from '../actions/viewAction'
 import { addPostToCategory, editPost } from '../actions/postAction'
 
+/*
+  This component lists posts for a specific category or home (home = all categories combined)
+  It also contains the modal for adding/editing a post
+*/
 class ListPosts extends Component {
 
   state = {
@@ -23,11 +26,13 @@ class ListPosts extends Component {
   handleOnChange = (event) => {
     this.props.dispatch(setSortMethod(event.target.value === 'popular'))
   }
+
   handleSelection = (event) => {
     this.setState({
       modalCategorySelected: event.target.value
     }) 
   }
+
   openModal = (status) => {
     if (status !=='new') {
       this.setState({ isEdit: true })
@@ -37,6 +42,7 @@ class ListPosts extends Component {
     })
   }
 
+  // If editing a post, populate the input fields with existing data
   afterOpenModal = () => {
     if (this.state.isEdit) {
       const postId = this.props.views.editingPostId
@@ -58,7 +64,6 @@ class ListPosts extends Component {
 
   addPost = () => {
     const postId = this.props.views.editingPostId
-    // const commentId = this.props.views.viewingCommentId
     if (this.state.isEdit) {
       this.props.dispatch(editPost(postId, this.title.value, this.body.value)).then(() => {
         console.log('Success-Edited a post')    
@@ -107,9 +112,7 @@ class ListPosts extends Component {
           )
         }
 
-
-
-
+        {/* Modal for adding/editing a post */}
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -167,8 +170,6 @@ class ListPosts extends Component {
           </div>
         </Modal>
 
-
-
         {/* Create an arrray of post objects */}
         { 
           (() => {
@@ -188,7 +189,6 @@ class ListPosts extends Component {
         {/* Sort by time or vote score */}
         { 
           (() => {
-            // console.log('sortByVotes: ', sortByVotes)
             sortByVotes ?
               postList.sort(sortBy('-voteScore'))
               :

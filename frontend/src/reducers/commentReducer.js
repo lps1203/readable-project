@@ -1,6 +1,9 @@
-import { GET_COMMENTS_FROM_POST } from '../actions/commentAction'
-import { ADD_COMMENT_TO_POST } from '../actions/commentAction'
-import { EDIT_COMMENT, VOTE_ON_COMMENT, DELETE_COMMENT } from '../actions/commentAction'
+import { GET_COMMENTS_FROM_POST,
+         ADD_COMMENT_TO_POST,
+         EDIT_COMMENT,
+         VOTE_ON_COMMENT, 
+         DELETE_COMMENT 
+        } from '../actions/commentAction'
 
 const initialCommentState = {}
 

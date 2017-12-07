@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { voteOnPost } from '../actions/postAction'
 import { voteOnComment } from '../actions/commentAction'
 import upArrow from '../up.png'
 import downArrow from '../down.png'
 
+/*
+  This function displays the voteScore of a post or a comment
+  It also displays the arrows that can be clicked for upvoting or downvoting
+*/
 function Vote(props) {
   const { kind, posts, comments, id, dispatch } = props
   const isPost = kind === 'post'

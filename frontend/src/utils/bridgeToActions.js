@@ -1,7 +1,11 @@
 import * as PostAction from '../actions/postAction'
 import * as CommentAction from '../actions/commentAction'
 
-
+/*
+  These functioins are invoked instead of directly dispatching an action since:
+    1. Some extra work needs to be done along with dispatching an action 
+    2. Multiple actions need to dispatched at the same time
+*/
 export const deletePost = (props, postId) => {
   props.dispatch(PostAction.deletePost(postId)).then(() => {
     console.log('Success-Deleted a post')
@@ -19,7 +23,6 @@ export const deleteComment = (props, commentId, parentId) => {
 }
 
 export const addComment = (props, postId, body, author) => {
-  console.log('&&&&&&&&&&&&&&&&&&&&&&&', postId, body, author)
   props.dispatch(CommentAction.addCommentToPost(postId, body, author))
   props.dispatch(PostAction.incrementCommentCount(postId)) 
 }

@@ -38,7 +38,6 @@ function addCommentToPost_(newComment) {
 }
 
 export function addCommentToPost(postId, body, author) {
-  console.log('*********************** postId *******\n', postId, body, author)
   return function(dispatch) {
     return BackendAPI.addCommentToPost(postId, body, author)
     .then((data) => {

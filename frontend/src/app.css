@@ -15,11 +15,9 @@
 ul {
   list-style-type: none;
 }
-
 ol {
   list-style-type: none;  
 }
-
 .top-navi-list {
   display: inline;
   margin-right: 40px;
@@ -40,7 +38,6 @@ ol {
 .sort div {
   float: left;
 }
-
 #sort-order {
   font-size: 83%;
   margin-left: 5px;
@@ -56,7 +53,6 @@ ol {
   background-color: #efefef;
   border: 1px solid #999999;
 }
-
 #comment-btn {
   margin-left: 580px;
   height: 23px;
@@ -66,7 +62,6 @@ ol {
   background-color: #efefef;
   border: 1px solid #999999;
 }
-
 .one-post {
   margin-left: 20px;
   margin-top: 20px;
@@ -81,7 +76,6 @@ ol {
 .comment-count-display, .comment-number-display {
   background-color: white;
   width: 80px;
-  /* height: 100px; */
   float: left;
   clear: left;
   margin: 0px 10px 10px 10px; 
@@ -89,7 +83,6 @@ ol {
 .post-display {
   background-color: white;
   width: 450px;
-  /* height: 100px; */
   float: left;
   margin-top: 0px;
   margin-bottom: 28px;
@@ -98,13 +91,11 @@ ol {
 .comment-display {
   background-color: white;
   width: 430px;
-  /* height: 100px; */
   float: left;
   margin-top: 0px;
   margin-bottom: 15px;
   margin-left: 140px;
 } 
-
 .title {
   font-family: Georgia, serif;
   font-size: 106%;
@@ -163,7 +154,6 @@ ol {
   padding: 0px;
   font-size: 90%;
   font-style: italic;
-  /* height: 17px; */
   overflow: hidden;
 }
 .author .poster {
@@ -177,7 +167,6 @@ ol {
   margin: 0px;
   padding: 0px;
 }
-
 .btn {
   height: 20px;
   width: 55px;
@@ -188,20 +177,12 @@ ol {
   margin-right: 3px;
   margin-top: 5px;
 }
-
 .comment {
   width: 70px;
 }
-
-
-
-
-
-
 .vote {
   background-color: white;
   width: 100px;
-  /* height: 100px; */
   float: left;
   margin-left: 10px;
 }
@@ -213,7 +194,6 @@ ol {
 .vote-left {
   float: left;
   width: 18px;
-  /* height: 90px; */
   background-color: white;
   margin-left: 5px;
 }
@@ -239,8 +219,6 @@ ol {
   font-size: 80%;
   text-align: center;
 }
-
-
 .gap {
   height: 5px;
   width: 680px;
@@ -249,7 +227,6 @@ ol {
   clear: left;
   margin-top: -15px;
 }
-
 hr {
   display: block;
   margin-left: 140px;
@@ -257,12 +234,10 @@ hr {
   border-width: 1px;
   border-color: #efefef
 }
-
 .modal {
   width: 400px;
   height: 500px;
 }
-
 .modal .close-btn {
   background-color: white;
   float: right;
@@ -276,36 +251,30 @@ hr {
   height: 30px;
   padding: 0px;
 }
-
 .modal #category-selection {
   margin-left: 10px;
   font-size: 90%;
   margin-bottom: 25px;
   background-color: #eeeeee;
 }
-
 .modal .label1 {
   font-family: sans-serif;
   font-size: 96%;
   margin: 30px 0px 0px 15px;
   color: #555555;
 }
-
 .modal #author {
   margin: 5px 0px 20px 15px;
   padding-left: 5px;
-  /* background-color: #efefef; */
   height: 25px;
   width: 350px;
   font-family: Georgia, serif;
   font-size: 95%;
   border-bottom: 1px solid #aaaaaa;
 }
-
 .modal #title {
   margin: 5px 0px 20px 15px;
   padding-left: 5px;
-  /* background-color: #efefef; */
   height: 25px;
   width: 350px;
   font-family: Georgia, serif;
@@ -318,11 +287,9 @@ hr {
   margin: 30px 0px 0px 15px;
   color: #555555;
 }
-
 .modal #body {
   margin: 5px 0px 20px 15px;
   padding: 5px;
-  /* background-color: #efefef; */
   height: 150px;
   width: 340px;
   font-family: Georgia, serif;
@@ -330,13 +297,11 @@ hr {
   font-weight: thin;
   border: 1px solid #aaaaaa;
 }
-
 .modal .send {
   height: 23px;
   width: 60px;
   font-size: 85%;
   font-weight: 500;
-  /* background-color: #efefef; */
   border: 1px solid #999999;
   margin-left: 15px;
   margin-bottom: 10px;

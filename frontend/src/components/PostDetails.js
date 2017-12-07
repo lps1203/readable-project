@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
-import ListOneComment from './ListOneComment'
-import Vote from './Vote'
-import fancyTimestamp from 'fancy-timestamp'
-import * as APIBridge from '../utils/apiBridge'
 import { connect } from 'react-redux'
-import { setViewPostId, setViewCategory, setViewCommentId, setEditPostId } from '../actions/viewAction'
-import { editComment } from '../actions/commentAction'
 import sortBy from 'sort-by'
 import Modal from 'react-modal'
+import fancyTimestamp from 'fancy-timestamp'
+import ListOneComment from './ListOneComment'
+import Vote from './Vote'
+import * as APIBridge from '../utils/bridgeToActions'
+import { setViewPostId, setViewCategory, setViewCommentId, setEditPostId } from '../actions/viewAction'
+import { editComment } from '../actions/commentAction'
 
+/*
+  This component displays details of a post including all the comments to the post
+  It also contains the modal for adding/editing a comment
+*/
 class PostDetails extends Component {
 
   state = {
@@ -118,6 +122,7 @@ class PostDetails extends Component {
           </div>
         </div>
 
+        {/* Modal for adding/editing a comment */}
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -148,9 +153,8 @@ class PostDetails extends Component {
           </div>
         </Modal>
 
-
-
         <div className="gap"><hr/></div>
+        
         {/* Sort comments by date */}
         { 
           (() => {

@@ -1,30 +1,21 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Vote from './Vote'
 import fancyTimestamp from 'fancy-timestamp'
-import * as APIBridge from '../utils/apiBridge'
 import PostDetails from './PostDetails'
+import Vote from './Vote'
+import * as APIBridge from '../utils/bridgeToActions'
 import { setViewPostId, setEditPostId } from '../actions/viewAction'
-// import { deleteComment_ } from '../actions/commentAction'
 
-
+/*
+  This component lists a single post
+*/
 class ListOnePost extends Component {
-
-  // deletePost = (postId) => {
-  //   this.props.dispatch(deletePost(postId)).then(() => {
-  //     console.log('Success-Deleted a post')
-  //   })
-  //   // delete (from the store) the comments belonging to the deleted post
-  //   Object.keys(this.props.comments).forEach(commentId => {
-  //     this.props.comments[commentId]['parentId'] === postId &&
-  //       this.props.dispatch(deleteComment_(commentId))
-  //   })
-  // }
 
   handleOnClick = () => {
     this.props.dispatch(setViewPostId(this.props.postId))   
   }
+
   openEditModal = () => {
     this.props.dispatch(setEditPostId(this.props.postId))
     this.props.openModalPost()
@@ -55,7 +46,10 @@ class ListOnePost extends Component {
             <button className="edit btn" onClick={this.openEditModal}>Edit</button>
             <button className="delete btn" onClick={() => APIBridge.deletePost(this.props, postId)}>Delete</button>
           </div>
+
+          {/* Establish route for "/:category/:postId" */}
           <Route path={`/${category}/:postId`} component={PostDetails}/>
+
         </div>
         <div className="vote-display">
           <Vote id={postId} kind="post"/>
