@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link, Redirect } from 'react-router-dom'
+import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import ListPosts from './ListPosts'
 import { setViewCategory, setViewPostId } from '../actions/viewAction'
@@ -170,4 +170,4 @@ const mapStateToProps = ({ view, category, post, comment }) => ({
   comments: comment
 })
 
-export default connect(mapStateToProps)(App)
+export default withRouter(connect(mapStateToProps)(App))
