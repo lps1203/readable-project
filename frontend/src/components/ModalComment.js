@@ -5,6 +5,9 @@ import * as APIBridge from '../utils/bridgeToActions'
 import { editComment } from '../actions/commentAction'
 import { setEditCommentId, setModalCommentOpen } from '../actions/viewAction'
 
+/*
+  Modal for adding/editing a comment
+*/
 class ModalComment extends Component {
 
   state = {

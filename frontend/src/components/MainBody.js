@@ -3,6 +3,9 @@ import { Route } from 'react-router-dom'
 import ListPosts from './ListPosts'
 import PostDetails from './PostDetails'
 
+/*
+  Main body to display content in
+*/
 const MainBody = (props) =>  (
   <div>
     <Route exact path={props.match.url} render={() => {
@@ -15,7 +18,3 @@ const MainBody = (props) =>  (
   </div>
 )
 export default MainBody
-
-
-
-//<li key={viewingPostId}><PostDetails postId={viewingPostId} openModalPost={this.openModal}/></li>

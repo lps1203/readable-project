@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { addPostToCategory, editPost } from '../actions/postAction'
 import { setEditPostId, setModalPostOpen } from '../actions/viewAction'
 
+/*
+  Modal for adding/editing a post
+*/
 class ModalPost extends Component {
 
   state = {
