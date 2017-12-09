@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import ListPosts from './ListPosts'
+import MainBody from './MainBody'
 import { setViewCategory, setViewPostId } from '../actions/viewAction'
 import { getAllCategories } from '../actions/categoryAction'
 import { getAllPosts } from '../actions/postAction'
@@ -22,6 +22,9 @@ class App extends Component {
                     viewingPostId: null,
                     viewingCommentId: null,
                     editingPostId: null,
+                    editingCommentId: null,
+                    isModalPostOpen: false,
+                    isModalCommentOpen: false,
                     sortByVotes: true
                   },
             category: [ 'react', 'redux', 'udacity' ],
@@ -153,7 +156,7 @@ class App extends Component {
         <div className="Routes">
         {/* Establish routes for top navigation menu */}
         {/* Notice that "/" is the same as "/home" */}
-          <Route path="/:category" component={ListPosts}/>
+          <Route path="/:category" component={MainBody}/>
           <Route exact path="/" render={() =>
             <Redirect to="/home"/>
           }/>

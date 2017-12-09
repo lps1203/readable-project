@@ -308,3 +308,21 @@ hr {
   color: #333333;
   background-color: #efefef;
 }
+#no-post-error {
+  position: relative;
+  top: 100px;
+  left: 140px;
+  font-size: 110%
+}
+.firstline {
+  position: relative;
+  left: 130px;
+  font-family: Georgia, serif;
+}
+.secondline {
+  position: relative;
+  top: 20px;
+  left: 5px;
+  font-style: italic;
+  font-family: Georgia, serif;
+}

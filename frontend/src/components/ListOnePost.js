@@ -1,11 +1,11 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import fancyTimestamp from 'fancy-timestamp'
-import PostDetails from './PostDetails'
 import Vote from './Vote'
+import ModalPost from './ModalPost'
 import * as APIBridge from '../utils/bridgeToActions'
-import { setViewPostId, setEditPostId } from '../actions/viewAction'
+import { setViewPostId, setEditPostId, setModalPostOpen} from '../actions/viewAction'
 
 /*
   This component lists a single post
@@ -18,13 +18,16 @@ const ListOnePost = (props) => {
     props.dispatch(setViewPostId(postId))   
   }
 
-  const openEditModal = () => {
+  const openModalPost = () => {
     props.dispatch(setEditPostId(postId))
-    props.openModalPost()
+    props.dispatch(setModalPostOpen(true))
   }
 
   return (
     <div className="one-post">
+      {
+        props.views.isModalPostOpen && <ModalPost/>
+      }
       <div className="comment-count-display">
         <p className="comment-score">{post['commentCount']}</p>
         <p className="comment-score-label">
@@ -42,12 +45,9 @@ const ListOnePost = (props) => {
           <span className="poster">{post['author']}</span> - <span className="time">{fancyTimestamp(post['timestamp'], true)}</span>
         </p>
         <div className="btns">
-          <button className="edit btn" onClick={openEditModal}>Edit</button>
+          <button className="edit btn" onClick={openModalPost}>Edit</button>
           <button className="delete btn" onClick={() => APIBridge.deletePost(props, postId)}>Delete</button>
         </div>
-
-        {/* Establish route for "/:category/:postId" */}
-        <Route path={`/${category}/:postId`} component={PostDetails}/>
 
       </div>
       <div className="vote-display">
